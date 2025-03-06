@@ -1,4 +1,5 @@
-# Pagina de gestión y red social de series Anime
+# Anteproyecto
+## Pagina de gestión y red social de series Anime
 ## Sergio Dorantes Godino
 ### ¿Qué voy a hacer?
 - Voy a realizar una pagina web que funcionará como una biblioteca digital para añadir tus animes y mangas que vayas viendo además de añadir reviews y compartirlas con todo el mundo

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>GOL</h1>
+    
+    <ul>
+        <li>Tittle: {{ anime.title }}</li>
+         
+            <li>
+                
+                <a href="{% url 'animes:studio_details' anime.studio.id %}">Studio: {{ anime.studio.name }}</a>
+            
+            </li>
+        
+    </ul>
+  
+
+
+</body>
+</html>

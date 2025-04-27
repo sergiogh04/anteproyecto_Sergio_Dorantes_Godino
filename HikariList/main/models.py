@@ -1,29 +1,30 @@
 from django.db import models
-from django.contrib.auth.models import User
 
-class Genre(models.Model):
-    name = models.CharField(max_length=50)
+# Create your models here.
+
+class Studio(models.Model):
+    name = models.CharField(max_length=200)
+    foundation_year = models.DateField()
+    country = models.CharField(max_length=200)
+    def __str__(self):
+        return self.name
+
 
 class Anime(models.Model):
     title = models.CharField(max_length=200)
-    description = models.TextField()
-    episodes = models.PositiveIntegerField()
-    genres = models.ManyToManyField(Genre)
-    cover_image = models.ImageField(upload_to='covers/')
-    created_at = models.DateTimeField(auto_now_add=True)
+    studio = models.ForeignKey(Studio, on_delete=models.CASCADE)
+    genre =  models.ForeignKey('Genre', on_delete = models.CASCADE)
+    release_date =  models.DateField()
+    episodes = models.CharField(max_length=4)
+    synopsis = models.TextField()
+    def __str__(self):
+        return self.title
 
-STATUS_CHOICES = [
-    ('W', 'Watching'),
-    ('C', 'Completed'),
-    ('O', 'On Hold'),
-    ('D', 'Dropped'),
-    ('P', 'Plan to Watch'),
-]
 
-class UserAnimeList(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    anime = models.ForeignKey(Anime, on_delete=models.CASCADE)
-    status = models.CharField(max_length=1, choices=STATUS_CHOICES)
-    rating = models.PositiveSmallIntegerField(null=True, blank=True)
-    review = models.TextField(blank=True)
-    watched_episodes = models.PositiveIntegerField(default=0)
+
+class Genre(models.Model):
+
+    genre_name = models.CharField(max_length = 200)
+    genre_description  = models.TextField()
+    def __str__(self):
+        return self.genre_name

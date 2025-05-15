@@ -1,0 +1,330 @@
+/* Estilos generales */
+.anime-bg {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url('../images/anime-mix-3109.jpg') center/cover fixed;
+    min-height: 100vh;
+}
+
+/* Fuente personalizada */
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&display=swap');
+
+/* Título principal */
+.anime-title {
+    font-family: 'Chakra Petch', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 6rem;
+    letter-spacing: 4px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.hikari {
+    color: #ff6b6b;
+    display: inline-block;
+    transform: rotate(-3deg);
+    margin-right: 25px;
+    text-shadow:
+        3px 3px 0 #4ecdc4,
+        6px 6px 0 #ffe66d,
+        0 0 30px rgba(255,107,107,0.8);
+    animation: float 3s ease-in-out infinite;
+}
+
+.list {
+    color: #4ecdc4;
+    display: inline-block;
+    transform: rotate(2deg);
+    position: relative;
+    top: -8px;
+    text-shadow:
+        3px 3px 0 #ff6b6b,
+        6px 6px 0 #ffe66d,
+        0 0 30px rgba(78,205,196,0.8);
+    animation: float-list 3.5s ease-in-out infinite;
+}
+
+/* Animaciones */
+@keyframes float {
+    0% { transform: translateY(0px) rotate(-3deg); }
+    50% { transform: translateY(-25px) rotate(-6deg); }
+    100% { transform: translateY(0px) rotate(-3deg); }
+}
+
+@keyframes float-list {
+    0% { transform: translateY(0px) rotate(2deg); }
+    50% { transform: translateY(-25px) rotate(5deg); }
+    100% { transform: translateY(0px) rotate(2deg); }
+}
+
+/* Botones */
+.btn-main {
+    transition: all 0.3s ease;
+    border-radius: 30px;
+    padding: 12px 25px;
+    border: 2px solid rgba(255,255,255,0.3);
+    font-size: 1.1rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.btn-main {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 7px 25px rgba(0,0,0,0.4);
+}
+
+.btn-main {
+    background: #2980b9;
+}
+
+.btn-main {
+    background: #27ae60;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .anime-title {
+        font-size: 3.5rem;
+    }
+
+    .hikari, .list {
+        display: block;
+        margin: 0;
+        transform: none;
+        animation: none;
+    }
+
+    .list {
+        top: 0;
+        margin-top: -15px;
+    }
+
+    .btn-main {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+/* Estilos para botones anime */
+.btn-login {
+    background: #ff6b6b;
+    border: #ff6b6b;
+    color: #fff !important;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+
+}
+
+.btn-register {
+    background: #4ecdc4;
+    border: #4ecdc4;
+    color: #000 !important;
+    text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+
+}
+
+
+@keyframes neon-glare {
+    0% { transform: rotate(45deg) translate(-50%, -50%); }
+    100% { transform: rotate(45deg) translate(50%, 50%); }
+}
+
+.btn-main {
+    border-radius: 15px;
+    padding: 12px 25px;
+    font-family: 'Chakra Petch', sans-serif;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
+}
+
+.btn-login{
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+}
+
+.btn-main:hover {
+    transform: scale(1.1) rotate(2deg);
+    filter: brightness(1.2);
+    z-index: 10;
+}
+
+.btn-main i {
+    margin-right: 10px;
+    filter: drop-shadow(0 0 3px rgba(255,255,255,0.5));
+}
+
+/* Efecto de chispa al hacer hover */
+.btn-main:hover::after {
+    content: '✦';
+    position: absolute;
+    animation: sparkle 0.5s linear;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255,255,255,0.8);
+}
+
+@keyframes sparkle {
+    0% { transform: translate(-50%, -50%) scale(0); opacity: 1; }
+    100% { transform: translate(100%, -100%) scale(2); opacity: 0; }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .btn-neon-red,
+    .btn-neon-blue {
+        font-size: 0.9rem;
+        padding: 10px 15px;
+    }
+
+    .btn-main i {
+        margin-right: 5px;
+    }
+}
+
+/* Estilo del subtítulo */
+.subtitle {
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 1.8rem;
+    color: #b3e0dd;
+    text-shadow:
+        0 0 15px rgba(78, 205, 196, 0.5),
+        2px 2px 3px rgba(0, 0, 0, 0.3);
+    position: relative;
+    padding: 15px 30px;
+    display: inline-block;
+    animation: subtitle-glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes subtitle-glow {
+    from {
+        text-shadow:
+            0 0 10px rgba(78, 205, 196, 0.3),
+            2px 2px 3px rgba(0, 0, 0, 0.2);
+    }
+    to {
+        text-shadow:
+            0 0 25px rgba(78, 205, 196, 0.7),
+            3px 3px 5px rgba(0, 0, 0, 0.4);
+    }
+}
+
+/* Decoraciones de estrellas */
+.subtitle-deco-left,
+.subtitle-deco-right {
+    position: relative;
+    animation: star-twinkle 1.5s infinite ease-in-out;
+    filter: drop-shadow(0 0 3px rgba(255,255,255,0.5));
+}
+
+.subtitle-deco-left {
+    margin-right: 15px;
+    transform: rotate(-15deg);
+}
+
+.subtitle-deco-right {
+    margin-left: 15px;
+    transform: rotate(15deg);
+}
+
+@keyframes star-twinkle {
+    0%, 100% {
+        opacity: 0.8;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.3);
+    }
+}
+
+/* Borde dinámico */
+.subtitle::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 3px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #4ecdc4,
+        #ff6b6b,
+        transparent
+    );
+    animation: border-flow 3s linear infinite;
+}
+
+@keyframes border-flow {
+    0% { background-position: -100% 0; }
+    100% { background-position: 200% 0; }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .subtitle {
+        font-size: 1.2rem;
+        padding: 10px 15px;
+    }
+
+    .subtitle-deco-left,
+    .subtitle-deco-right {
+        font-size: 0.8em;
+    }
+}
+
+/* ========== BOTÓN COMENZAR ========== */
+.btn-comenzar {
+    padding: 15px 50px;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    color: white !important;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 30px;
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-comenzar:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 6px 25px rgba(78, 205, 196, 0.5);
+    filter: brightness(1.1);
+}
+
+/* Efecto de brillo al hover */
+.btn-comenzar::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg,
+        transparent,
+        rgba(255,255,255,0.2),
+        transparent);
+    transform: rotate(45deg);
+    animation: btn-glow 1.5s infinite;
+}
+
+@keyframes btn-glow {
+    0% { transform: translate(-100%, -100%); }
+    100% { transform: translate(100%, 100%); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .btn-comenzar {
+        padding: 12px 35px;
+        font-size: 1.1rem;
+    }
+}

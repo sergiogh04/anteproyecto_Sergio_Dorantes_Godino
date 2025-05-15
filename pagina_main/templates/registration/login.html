@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/register.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="auth-container">
+    <div class="auth-card">
+        <h2 class="auth-title">INICIO DE SESIÓN</h2>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="auth-input-group">
+                <input type="text" name="username" class="auth-input" placeholder=" " required>
+                <label class="auth-input-label">Usuario</label>
+            </div>
+
+            <div class="auth-input-group">
+                <input type="password" name="password" class="auth-input" placeholder=" " required>
+                <label class="auth-input-label">Contraseña</label>
+            </div>
+
+            {% if form.errors %}
+                <div class="error-message">¡Credenciales incorrectas! Inténtalo de nuevo</div>
+            {% endif %}
+
+            <button type="submit" class="auth-btn">ACCEDER AL SISTEMA</button>
+        </form>
+
+        <div class="auth-links">
+            <a href="{% url 'register' %}" class="auth-link">¿Nuevo guerrero? ¡Únete!</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

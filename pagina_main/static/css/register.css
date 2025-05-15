@@ -1,0 +1,170 @@
+/* Estilos generales para formularios anime */
+.auth-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.auth-card {
+    background: rgba(30, 30, 30, 0.95);
+    border-radius: 20px;
+    border: 2px solid #4ecdc4;
+    box-shadow: 0 0 40px rgba(78, 205, 196, 0.3);
+    width: 100%;
+    max-width: 500px;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.auth-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg,
+        transparent,
+        rgba(255, 107, 107, 0.1),
+        transparent);
+    transform: rotate(45deg);
+    animation: form-glare 6s infinite linear;
+}
+
+@keyframes form-glare {
+    0% { transform: rotate(45deg) translate(-60%, -60%); }
+    100% { transform: rotate(45deg) translate(60%, 60%); }
+}
+
+.auth-title {
+    font-family: 'Chakra Petch', sans-serif;
+    color: #ff6b6b;
+    text-align: center;
+    text-shadow: 0 0 20px rgba(255, 107, 107, 0.4);
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+/* Campos de formulario estilo cyber */
+.auth-input-group {
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.auth-input {
+    width: 100%;
+    padding: 12px 20px;
+    background: rgba(50, 50, 50, 0.8);
+    border: 2px solid #4ecdc4;
+    border-radius: 10px;
+    color: #fff;
+    font-family: 'Chakra Petch', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.auth-input:focus {
+    background: rgba(70, 70, 70, 0.9);
+    border-color: #ff6b6b;
+    box-shadow: 0 0 15px rgba(255, 107, 107, 0.3);
+    outline: none;
+}
+
+.auth-input-label {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.auth-input:focus ~ .auth-input-label,
+.auth-input:not(:placeholder-shown) ~ .auth-input-label {
+    top: -10px;
+    left: 10px;
+    font-size: 0.8em;
+    color: #4ecdc4;
+    text-shadow: 0 0 10px rgba(78, 205, 196, 0.3);
+}
+
+/* Botones mejorados */
+.auth-btn {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(45deg, #ff6b6b, #ff8c8c);
+    color: #fff;
+    font-family: 'Chakra Petch', sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.auth-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 20px rgba(255, 107, 107, 0.4);
+}
+
+.auth-btn::after {
+    content: '▶';
+    position: absolute;
+    right: 20px;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.auth-btn:hover::after {
+    opacity: 1;
+    right: 15px;
+}
+
+/* Enlaces y extras */
+.auth-links {
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+.auth-link {
+    color: #4ecdc4;
+    text-decoration: none;
+    position: relative;
+}
+
+.auth-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #ff6b6b;
+    transition: width 0.3s ease;
+}
+
+.auth-link:hover::after {
+    width: 100%;
+}
+
+/* Efectos de error */
+.error-message {
+    color: #ff4444;
+    text-shadow: 0 0 10px rgba(255, 68, 68, 0.3);
+    font-size: 0.9em;
+    margin-top: 5px;
+    display: block;
+    animation: error-shake 0.4s ease;
+}
+
+@keyframes error-shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+}

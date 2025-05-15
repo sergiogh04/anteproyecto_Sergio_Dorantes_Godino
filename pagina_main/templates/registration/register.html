@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/register.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="auth-container">
+    <div class="auth-card">
+        <h2 class="auth-title">NUEVO REGISTRO</h2>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="auth-input-group">
+                <input type="text" name="username" class="auth-input" placeholder=" " required>
+                <label class="auth-input-label">Nombre de guerrero</label>
+                {% if form.username.errors %}
+                    <span class="error-message">{{ form.username.errors.0 }}</span>
+                {% endif %}
+            </div>
+
+            <div class="auth-input-group">
+                <input type="email" name="email" class="auth-input" placeholder=" " required>
+                <label class="auth-input-label">Correo electrónico</label>
+            </div>
+
+            <div class="auth-input-group">
+                <input type="password" name="password1" class="auth-input" placeholder=" " required>
+                <label class="auth-input-label">Contraseña secreta</label>
+            </div>
+
+            <div class="auth-input-group">
+                <input type="password" name="password2" class="auth-input" placeholder=" " required>
+                <label class="auth-input-label">Confirmar contraseña</label>
+                {% if form.password2.errors %}
+                    <span class="error-message">{{ form.password2.errors.0 }}</span>
+                {% endif %}
+            </div>
+
+            <button type="submit" class="auth-btn">¡COMENZAR AVENTURA!</button>
+        </form>
+
+        <div class="auth-links">
+            <a href="{% url 'login' %}" class="auth-link">¿Ya tienes una cuenta? ¡Accede!</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

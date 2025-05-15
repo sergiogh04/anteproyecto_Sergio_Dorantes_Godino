@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="home-bg">
+    <!-- Botones superiores simplificados -->
+    <div class="container-fluid position-absolute top-0 end-0 mt-3 me-4">
+        <div class="d-flex gap-3 justify-content-end">
+            <a href="{% url 'login' %}" class="btn-main btn-login">
+                Iniciar Sesión
+            </a>
+            <a href="{% url 'register' %}" class="btn-main btn-register">
+                Registrarse
+            </a>
+        </div>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="container">
+        <div class="row min-vh-100 align-items-center justify-content-center text-center">
+            <div class="col-12 col-lg-10">
+                <h1 class="anime-title mb-4">
+                    <span class="hikari">HIKARI</span>
+                    <span class="list">LIST</span>
+                </h1>
+                <p class="lead text-light mb-5 subtitle">
+                    <span class="subtitle-deco-left"></span>
+                   Tu página para registrar todas tus aventuras
+                    <span class="subtitle-deco-right"></span>
+                </p>
+                <br>
+                 <a href="#" class="btn-comenzar mt-4">
+                    ¡Comenzar Ahora!
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

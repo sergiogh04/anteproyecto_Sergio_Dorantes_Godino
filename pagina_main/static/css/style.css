@@ -57,7 +57,7 @@
     100% { transform: translateY(0px) rotate(2deg); }
 }
 
-/* Botones */
+
 .btn-main {
     transition: all 0.3s ease;
     border-radius: 30px;
@@ -80,7 +80,7 @@
     background: #ff6b6b;
 }
 
-/* Responsive */
+
 @media (max-width: 768px) {
     .anime-title {
         font-size: 3.5rem;
@@ -103,7 +103,7 @@
         margin-bottom: 10px;
     }
 }
-/* Estilos para botones anime */
+
 .btn-login {
     background: #14191f;
     border: #ff6b6b;
@@ -152,7 +152,7 @@
     filter: drop-shadow(0 0 3px rgba(255,255,255,0.5));
 }
 
-/* Efecto de chispa al hacer hover */
+
 .btn-main:hover::after {
     content: '✦';
     position: absolute;
@@ -166,7 +166,7 @@
     100% { transform: translate(100%, -100%) scale(2); opacity: 0; }
 }
 
-/* Responsive */
+
 @media (max-width: 768px) {
     .btn-neon-red,
     .btn-neon-blue {
@@ -179,7 +179,7 @@
     }
 }
 
-/* Estilo del subtítulo */
+
 .subtitle {
     font-family: 'Chakra Petch', sans-serif;
     font-size: 1.8rem;
@@ -206,7 +206,7 @@
     }
 }
 
-/* Decoraciones de estrellas */
+
 .subtitle-deco-left,
 .subtitle-deco-right {
     position: relative;
@@ -235,7 +235,7 @@
     }
 }
 
-/* Borde dinámico */
+
 .subtitle::after {
     content: '';
     position: absolute;
@@ -259,7 +259,7 @@
     100% { background-position: 200% 0; }
 }
 
-/* Responsive */
+
 @media (max-width: 768px) {
     .subtitle {
         font-size: 1.2rem;
@@ -272,7 +272,7 @@
     }
 }
 
-/* ========== BOTÓN COMENZAR ========== */
+
 .btn-comenzar {
     padding: 15px 50px;
     background-color: #14191f;
@@ -296,7 +296,7 @@
     filter: brightness(1.1);
 }
 
-/* Efecto de brillo al hover */
+
 .btn-comenzar::after {
     content: '';
     position: absolute;
@@ -317,7 +317,7 @@
     100% { transform: translate(100%, 100%); }
 }
 
-/* Responsive */
+
 @media (max-width: 768px) {
     .btn-comenzar {
         padding: 12px 35px;

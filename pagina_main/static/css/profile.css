@@ -1,10 +1,10 @@
-/* Fondo principal estilo anime */
+
 .anime-bg {
     background-color: #14191f;
     min-height: 100vh;
 }
 
-/* Tipografía principal */
+
 @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&display=swap');
 
 body {
@@ -15,7 +15,7 @@ body {
     padding: 0;
 }
 
-/* Estilos generales del perfil */
+
 .profile-container {
     padding: 2rem;
     max-width: 1200px;
@@ -23,14 +23,14 @@ body {
     position: relative;
 }
 
-/* Layout principal */
+
 .profile-main {
     display: grid;
     grid-template-columns: 1fr 4fr;
     gap: 2rem;
 }
 
-/* Botón volver */
+
 .back-to-index {
     position: fixed;
     bottom: 30px;
@@ -57,7 +57,7 @@ body {
     font-size: 1.2em;
 }
 
-/* Header del perfil */
+
 .profile-header {
     display: flex;
     gap: 2rem;
@@ -109,7 +109,7 @@ body {
     font-size: 1.2rem;
 }
 
-/* Navegación lateral */
+
 .status-nav {
     background: #1c2129;
     border-radius: 12px;
@@ -140,7 +140,7 @@ body {
     color: #000 !important;
 }
 
-/* Lista de animes */
+
 .anime-lists {
     flex: 1;
 }

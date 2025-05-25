@@ -1,10 +1,8 @@
-/* Fondo principal estilo anime */
 .anime-bg {
    background-color: #14191f;
     min-height: 100vh;
 }
 
-/* Tipografía principal */
 @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&display=swap');
 
 body {
@@ -14,8 +12,11 @@ body {
     margin: 0;
     padding: 0;
 }
-
-/* Encabezado estilo AniList */
+header nav .search-wrapper {
+  margin-right: 1rem;
+  order: 0;
+  width: 180px;
+}
 header {
     background-color: #14191f;
     padding: 1rem 2rem;
@@ -44,7 +45,7 @@ header nav a:hover {
 }
 
 
-/* Grilla de animes */
+
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -52,7 +53,7 @@ header nav a:hover {
     padding: 2rem;
 }
 
-/* Tarjetas */
+
 .card {
     background: #1c2129;
     border-radius: 12px;
@@ -84,7 +85,7 @@ header nav a:hover {
     padding: 0 1rem 1rem;
 }
 
-/* Detalle de anime */
+
 .anime-detail {
     display: flex;
     flex-wrap: wrap;
@@ -114,7 +115,7 @@ header nav a:hover {
     color: #4ecdc4;
 }
 
-/* Responsive */
+
 @media (max-width: 768px) {
     header {
         flex-direction: column;
@@ -146,7 +147,6 @@ header nav a:hover {
         0 0 30px rgba(255,107,107,0.8);
     animation: float 3s ease-in-out infinite;
 }
-/* Estilos de la barra de búsqueda en index */
 #search-input {
   font-family: 'Chakra Petch', sans-serif;
   font-size: 1rem;

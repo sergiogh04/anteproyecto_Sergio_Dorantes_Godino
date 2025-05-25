@@ -9,98 +9,98 @@
     <link rel="stylesheet" href="{% static 'css/main.css' %}"></link>
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&display=swap" rel="stylesheet">
     <style>
- /* Contenedor principal del carrusel */
+
        .carousel {
-    width: 100vw;                /* 100% del ancho de la ventana */
-    height: 300px;
-    margin: 0 auto;
-    position: relative;
-    overflow: hidden;
-    border-radius: 0;            /* Si no quieres bordes redondeados en pantallas completas */
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
-}
- /* Contenedor de búsqueda reducido */
-.search-wrapper {
-  position: relative;
-  width: 180px;             /* ancho pequeño */
-  flex-shrink: 0;           /* no se achique */
-}
+            width: 100vw;
+            height: 300px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            border-radius: 0;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+        }
 
-/* Input estilo minimalista */
-#search-input {
-  width: 100%;
-  padding: 0.25rem 0.75rem; /* más compacto */
-  border-radius: 9999px;
-  border: 1px solid #ff6b6b;
-  background: #1c2129;
-  color: #fff;
-  font-size: 0.875rem;
-  outline: none;
-  transition: all 0.2s;
-}
-
-#search-input:focus {
-  border-color: #ff6b6b;
-}
-
-/* Dropdown superpuesto */
-#search-preview {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  background: #1c2129;
-  border: 1px solid #ff6b6b;
-  border-radius: 0.5rem;
-  max-height: 180px;
-  overflow-y: auto;
-  display: none;
-  z-index: 9999;
-}
-
-/* Mostrar dropdown */
-#search-preview.show {
-  display: block;
-}
-
-/* Elementos de resultado */
-#search-preview a {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.4rem;
-  color: #fff;
-  text-decoration: none;
-  font-size: 0.875rem;
-}
-
-#search-preview a:hover {
-  background: #ff6b6b;
-  color: #000;
-}
-
-#search-preview img {
-  width: 30px;
-  height: 42px;
-  object-fit: cover;
-  border-radius: 0.25rem;
-}
+        .search-wrapper {
+          position: relative;
+          width: 180px;
+          flex-shrink: 0;
+        }
 
 
-        /* Contenedor de slides */
+        #search-input {
+          width: 150%;
+          padding: 0.25rem 0.75rem;
+          border-radius: 9999px;
+          border: 1px solid #ff6b6b;
+          background: #1c2129;
+          color: #fff;
+          font-size: 0.875rem;
+          outline: none;
+          transition: all 0.2s;
+        }
+
+        #search-input:focus {
+          border-color: #ff6b6b;
+        }
+
+
+        #search-preview {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          width: 160%;
+          background: #1c2129;
+          border: 1px solid #ff6b6b;
+          border-radius: 0.5rem;
+          max-height: 180px;
+          overflow-y: auto;
+          display: none;
+          z-index: 9999;
+        }
+
+
+        #search-preview.show {
+          display: block;
+        }
+
+
+        #search-preview a {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.4rem;
+          color: #fff;
+          text-decoration: none;
+          font-size: 0.875rem;
+        }
+
+        #search-preview a:hover {
+          background: #ff6b6b;
+          color: #000;
+        }
+
+        #search-preview img {
+          width: 30px;
+          height: 42px;
+          object-fit: cover;
+          border-radius: 0.25rem;
+        }
+
+
+
         .slides {
             display: flex;
             transition: transform 0.5s ease-in-out;
         }
 
-        /* Slide individual */
+
         .slide {
             min-width: 100%;
             position: relative;
             height: 500px;
         }
 
-        /* Imagen del slide */
+
         .slide img {
             width: 100%;
             height: 100%;
@@ -108,7 +108,7 @@
             filter: brightness(0.7);
         }
 
-        /* Contenido textual del slide */
+
         .slide-content {
             position: absolute;
             bottom: 200px;
@@ -128,7 +128,7 @@
             line-height: 1.5;
         }
 
-        /* Controles de navegación */
+
         .controls button {
             position: absolute;
             top: 50%;
@@ -156,7 +156,7 @@
             border-radius: 5px 0 0 5px;
         }
 
-        /* Indicadores de posición */
+
         .indicators {
             position: absolute;
             bottom: 20px;
@@ -200,79 +200,79 @@
                 font-size: 1em;
             }
         }
- /* Estilos del Footer */
-footer {
-    background-color: #14191f;
-    border-top: 3px solid #ff6b6b;
-    padding: 2.5rem 1rem;
-    margin-top: 5rem;
-    position: relative;
-    overflow: hidden;
-}
 
-footer p {
-    color: #fff;
-    text-align: center;
-    font-size: 1.1rem;
-    margin: 0;
-    position: relative;
-    z-index: 2;
-    letter-spacing: 1px;
-}
+        footer {
+            background-color: #14191f;
+            border-top: 3px solid #ff6b6b;
+            padding: 2.5rem 1rem;
+            margin-top: 5rem;
+            position: relative;
+            overflow: hidden;
+        }
 
-footer::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="%23222222" /></svg>');
-    opacity: 0.15;
-    z-index: 1;
-}
+        footer p {
+            color: #fff;
+            text-align: center;
+            font-size: 1.1rem;
+            margin: 0;
+            position: relative;
+            z-index: 2;
+            letter-spacing: 1px;
+        }
 
-footer::after {
-    content: '';
-    position: absolute;
-    bottom: -20px;
-    right: -20px;
-    width: 80px;
-    height: 80px;
-    background-color: #14191f;
-    border-radius: 50%;
-    filter: blur(15px);
-}
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="%23222222" /></svg>');
+            opacity: 0.15;
+            z-index: 1;
+        }
 
-/* Efecto de neón para el texto */
+        footer::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            width: 80px;
+            height: 80px;
+            background-color: #14191f;
+            border-radius: 50%;
+            filter: blur(15px);
+        }
 
 
-/* Responsive */
-@media (max-width: 768px) {
-    footer {
-        padding: 2rem 1rem;
-        margin-top: 3rem;
-    }
 
-    footer p {
-        font-size: 0.9rem;
-    }
 
-    footer::after {
-        width: 60px;
-        height: 60px;
-    }
-}
 
-@media (max-width: 480px) {
-    footer {
-        padding: 1.5rem 0.5rem;
-    }
+        @media (max-width: 768px) {
+            footer {
+                padding: 2rem 1rem;
+                margin-top: 3rem;
+            }
 
-    footer p {
-        font-size: 0.8rem;
-    }
-}
+            footer p {
+                font-size: 0.9rem;
+            }
+
+            footer::after {
+                width: 60px;
+                height: 60px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            footer {
+                padding: 1.5rem 0.5rem;
+            }
+
+            footer p {
+                font-size: 0.8rem;
+            }
+        }
 
     </style>
 </head>
@@ -280,7 +280,7 @@ footer::after {
 <body class="anime-bg">
     <header>
         <a href="{% url 'anime:index' %}"><h1 class="logo">HikariList</h1></a>
-        <div class="search-wrapper">
+          <div class="search-wrapper">
             <input id="search-input" type="text" placeholder="Buscar..." autocomplete="off">
             <div id="search-preview"></div>
         </div>
@@ -288,7 +288,6 @@ footer::after {
 
             <a href="{% url 'anime:home' %}">Inicio</a>
             <a href="{% url 'anime:home' %}">Foros</a>
-            <a href="{% url 'anime:home' %}">Buscar</a>
             <a href="{% url 'anime:profile' %}">Perfil</a>
 
 
@@ -407,13 +406,13 @@ footer::after {
       });
     });
 
-    // Carrusel JS
+    // Carrusel
     let currentIndex = 0;
     const slides = document.getElementById('slidesContainer');
     const totalSlides = document.querySelectorAll('.slide').length;
     const indicatorsContainer = document.getElementById('indicatorsContainer');
 
-    // Crear indicadores
+    // Indicaddores
     for (let i = 0; i < totalSlides; i++) {
       const indicator = document.createElement('div');
       indicator.className = 'indicator';
@@ -443,7 +442,7 @@ footer::after {
       updateSlide();
     }
 
-    // Autoplay
+
     setInterval(nextSlide, 6000);
     updateSlide();
   </script>

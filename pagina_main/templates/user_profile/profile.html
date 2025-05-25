@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Usuario</title>
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+<body class="anime-bg">
+    <header>
+         <a href="{% url 'anime:index' %}"><h1 class="logo">HikariList</h1></a>
+        <nav>
+            <a href="{% url 'anime:home' %}">Inicio</a>
+            <a href="{% url 'anime:home' %}">Foros</a>
+            <a href="{% url 'anime:home' %}">Buscar</a>
+            <a href="{% url 'anime:profile' %}">Perfil</a>
+        </nav>
+    </header>
+    <div class="anime-bg profile-container">
+        <a href="{% url 'anime:index' %}" class="back-to-index">
+            <span class="arrow">❮</span> Volver al Inicio
+        </a>
+
+        <section class="profile-header">
+            <div class="avatar-card">
+                <div class="avatar-wrapper">
+                    {% if profile.avatar %}
+                        <img src="{{ profile.avatar.url }}" alt="{{ user.username }}">
+                    {% else %}
+                        <img src="{% static 'images/hermosa-escena-de-dibujos-animados-de-personajes-de-anime.jpg' %}" style="width: 150%; height: auto; display: block;" alt="Avatar por defecto">
+                    {% endif %}
+                </div>
+                <form method="post" enctype="multipart/form-data" action="{% url 'anime:profile' %}">
+                    {% csrf_token %}
+                    <label class="upload-btn">
+                        Cambiar avatar
+                        <input type="file" name="avatar" onchange="this.form.submit()" hidden>
+                    </label>
+                </form>
+            </div>
+
+            <div class="profile-info">
+                <h2>{{ user.username }}</h2>
+                <p>Miembro desde: {{ user.date_joined|date:"d M Y" }}</p>
+            </div>
+        </section>
+
+        <div class="profile-main">
+            <aside class="status-nav">
+                <ul class="status-tabs">
+                    {% for code, label in status_choices %}
+                        <li data-status="{{ code }}" onclick="showTab('{{ code }}')">{{ label }}</li>
+                    {% endfor %}
+                </ul>
+            </aside>
+
+            <section class="anime-lists">
+                {% for code, label, animes in grouped_animes %}
+                    <div class="anime-group" id="group-{{ code }}">
+                        <div class="list-header">
+                            <h3>{{ label }}</h3>
+                            <span>{{ animes|length }} animes</span>
+                        </div>
+
+                        {% if animes %}
+                            <div class="grid">
+                                {% for ua in animes %}
+                                    <a href="{% url 'anime:detail' ua.anime.slug %}" class="card">
+                                        <div class="anime-card">
+                                            <img src="{{ ua.anime.image }}" alt="{{ ua.anime.title }}">
+                                            <div class="anime-info">
+                                                <h4>{{ ua.anime.title }}</h4>
+                                                <p>{{ ua.anime.format }} • {{ ua.anime.status }}</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            <div class="empty-state">
+                                <p>No tienes animes en esta categoría</p>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </section>
+        </div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            showTab('{{ grouped_animes.0.0 }}');
+            const defaultTab = document.querySelector(`[data-status="{{ grouped_animes.0.0 }}"]`);
+            if (defaultTab) {
+                defaultTab.classList.add('active');
+            }
+        }
+
+        function showTab(status) {
+            document.querySelectorAll('.anime-group').forEach(group => {
+                group.style.display = 'none';
+            });
+
+            const activeGroup = document.getElementById(`group-${status}`);
+            if (activeGroup) {
+                activeGroup.style.display = 'block';
+            }
+
+            document.querySelectorAll('.status-tabs li').forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            const activeTab = document.querySelector(`[data-status="${status}"]`);
+            if (activeTab) {
+                activeTab.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>

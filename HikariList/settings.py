@@ -36,9 +36,8 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'pagina_main',
+    'pagina_main.apps.PaginaMainConfig',
     'django.contrib.staticfiles',
-    'gestion_animes'
 
 ]
 

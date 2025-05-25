@@ -1,0 +1,157 @@
+/* Fondo principal estilo anime */
+.anime-bg {
+   background-color: #14191f;
+    min-height: 100vh;
+}
+
+/* Tipografía principal */
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&display=swap');
+
+body {
+    font-family: 'Chakra Petch', sans-serif;
+    background-color: #0b0e14;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+/* Encabezado estilo AniList */
+header {
+    background-color: #14191f;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #2c3e50;
+}
+
+header h1 {
+    font-size: 2rem;
+    color: #4ecdc4;
+    margin: 0;
+}
+
+header nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 1rem;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+header nav a:hover {
+    color: #4ecdc4;
+}
+
+
+/* Grilla de animes */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+}
+
+/* Tarjetas */
+.card {
+    background: #1c2129;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0,0,0,0.4);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.card h2 {
+    font-size: 1.2rem;
+    margin: 0.8rem 0 0.4rem 0;
+    padding: 0 1rem;
+    color: #ff6b6b;
+}
+
+.card p {
+    font-size: 0.9rem;
+    color: #ccc;
+    padding: 0 1rem 1rem;
+}
+
+/* Detalle de anime */
+.anime-detail {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    padding: 2rem;
+    background-color: #0f131a;
+}
+
+.anime-detail img {
+    width: 300px;
+    max-width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+}
+
+.anime-detail div {
+    max-width: 600px;
+}
+
+.anime-detail p {
+    margin: 0.5rem 0;
+    line-height: 1.5;
+    color: #c7d2e2;
+}
+
+.anime-detail strong {
+    color: #4ecdc4;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+
+    .anime-detail {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .anime-detail div {
+        text-align: center;
+    }
+}
+
+.logo {
+   color: #ff6b6b;
+    display: inline-block;
+    transform: rotate(-3deg);
+    margin-right: 25px;
+    text-shadow:
+        3px 3px 0 #4ecdc4,
+        6px 6px 0 #ffe66d,
+        0 0 30px rgba(255,107,107,0.8);
+    animation: float 3s ease-in-out infinite;
+}
+/* Estilos de la barra de búsqueda en index */
+#search-input {
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 1rem;
+}
+
+#search-preview {
+  font-family: 'Chakra Petch', sans-serif;
+}

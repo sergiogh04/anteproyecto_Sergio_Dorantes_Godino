@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="es">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <title>HikariList</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}"></link>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&display=swap" rel="stylesheet">
+    <style>
+ /* Contenedor principal del carrusel */
+       .carousel {
+    width: 100vw;                /* 100% del ancho de la ventana */
+    height: 300px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    border-radius: 0;            /* Si no quieres bordes redondeados en pantallas completas */
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+ /* Contenedor de búsqueda reducido */
+.search-wrapper {
+  position: relative;
+  width: 180px;             /* ancho pequeño */
+  flex-shrink: 0;           /* no se achique */
+}
+
+/* Input estilo minimalista */
+#search-input {
+  width: 100%;
+  padding: 0.25rem 0.75rem; /* más compacto */
+  border-radius: 9999px;
+  border: 1px solid #ff6b6b;
+  background: #1c2129;
+  color: #fff;
+  font-size: 0.875rem;
+  outline: none;
+  transition: all 0.2s;
+}
+
+#search-input:focus {
+  border-color: #ff6b6b;
+}
+
+/* Dropdown superpuesto */
+#search-preview {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: #1c2129;
+  border: 1px solid #ff6b6b;
+  border-radius: 0.5rem;
+  max-height: 180px;
+  overflow-y: auto;
+  display: none;
+  z-index: 9999;
+}
+
+/* Mostrar dropdown */
+#search-preview.show {
+  display: block;
+}
+
+/* Elementos de resultado */
+#search-preview a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem;
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.875rem;
+}
+
+#search-preview a:hover {
+  background: #ff6b6b;
+  color: #000;
+}
+
+#search-preview img {
+  width: 30px;
+  height: 42px;
+  object-fit: cover;
+  border-radius: 0.25rem;
+}
+
+
+        /* Contenedor de slides */
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        /* Slide individual */
+        .slide {
+            min-width: 100%;
+            position: relative;
+            height: 500px;
+        }
+
+        /* Imagen del slide */
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.7);
+        }
+
+        /* Contenido textual del slide */
+        .slide-content {
+            position: absolute;
+            bottom: 200px;
+            left: 50px;
+            max-width: 600px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .slide h3 {
+            font-size: 2.5em;
+            margin: 0 0 20px 0;
+            color: #ff6b6b;
+        }
+
+        .slide p {
+            font-size: 1.2em;
+            line-height: 1.5;
+        }
+
+        /* Controles de navegación */
+        .controls button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: white;
+            padding: 15px;
+            cursor: pointer;
+            font-size: 2em;
+            transition: all 0.3s ease;
+        }
+
+        .controls button:hover {
+            background: rgba(255, 107, 107, 0.8);
+        }
+
+        .prev {
+            left: 0;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .next {
+            right: 0;
+            border-radius: 5px 0 0 5px;
+        }
+
+        /* Indicadores de posición */
+        .indicators {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .indicator {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .indicator.active {
+            background: #ff6b6b;
+            transform: scale(1.2);
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .carousel {
+                width: 95%;
+            }
+
+            .slide-content {
+                bottom: 20px;
+                left: 20px;
+                right: 20px;
+            }
+
+            .slide h3 {
+                font-size: 1.8em;
+            }
+
+            .slide p {
+                font-size: 1em;
+            }
+        }
+ /* Estilos del Footer */
+footer {
+    background-color: #14191f;
+    border-top: 3px solid #ff6b6b;
+    padding: 2.5rem 1rem;
+    margin-top: 5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+footer p {
+    color: #fff;
+    text-align: center;
+    font-size: 1.1rem;
+    margin: 0;
+    position: relative;
+    z-index: 2;
+    letter-spacing: 1px;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="%23222222" /></svg>');
+    opacity: 0.15;
+    z-index: 1;
+}
+
+footer::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    width: 80px;
+    height: 80px;
+    background-color: #14191f;
+    border-radius: 50%;
+    filter: blur(15px);
+}
+
+/* Efecto de neón para el texto */
+
+
+/* Responsive */
+@media (max-width: 768px) {
+    footer {
+        padding: 2rem 1rem;
+        margin-top: 3rem;
+    }
+
+    footer p {
+        font-size: 0.9rem;
+    }
+
+    footer::after {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+@media (max-width: 480px) {
+    footer {
+        padding: 1.5rem 0.5rem;
+    }
+
+    footer p {
+        font-size: 0.8rem;
+    }
+}
+
+    </style>
+</head>
+
+<body class="anime-bg">
+    <header>
+        <a href="{% url 'anime:index' %}"><h1 class="logo">HikariList</h1></a>
+        <div class="search-wrapper">
+            <input id="search-input" type="text" placeholder="Buscar..." autocomplete="off">
+            <div id="search-preview"></div>
+        </div>
+        <nav>
+
+            <a href="{% url 'anime:home' %}">Inicio</a>
+            <a href="{% url 'anime:home' %}">Foros</a>
+            <a href="{% url 'anime:home' %}">Buscar</a>
+            <a href="{% url 'anime:profile' %}">Perfil</a>
+
+
+        </nav>
+    </header>
+     <div class="carousel">
+        <div class="slides" id="slidesContainer">
+            <!-- Slide 1 -->
+            <div class="slide">
+                <img src="https://imgs.search.brave.com/Fa2imAH_rT9WgzToaUEvj_tkVqnaC-VZi3M3NSUp6-Q/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL1Mv/cHYtdGFyZ2V0LWlt/YWdlcy85NWVhNTZh/YjIxMmZiYzIwMjA3/MTJlYmRkOWNjNWM2/ZDNjNzliY2Q1Yzcx/OTM4NmFjMDk1MmI4/NTZhMWY0ZTZmLmpw/Zw" alt="Attack on Titan">
+                <div class="slide-content">
+                    <h3>Attack on Titan Final</h3>
+                    <p>La épica conclusión llegará este otoño cerrando la saga de Eren y sus aliados.</p>
+                </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="slide">
+                <img src="https://imgs.search.brave.com/R_WvkJ5AobA6AE0pD2q-tkohBPNq3iUWOjs3a0-840M/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJjYXZlLmNv/bS93cC93cDQzMTc5/MDMuanBn" alt="Demon Slayer">
+                <div class="slide-content">
+                    <h3>Demon Slayer: Castillo Infinito</h3>
+                    <p>Nueva producción cinematográfica para cerrar el arco final.</p>
+                </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="slide">
+                <img src="https://imgs.search.brave.com/ljtwhGRChYqf-CaPrRC_iPp09cQJpxsFUQBwL1Krf2k/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJjYXQuY29t/L3cvZnVsbC85LzAv/Ny8yNDcwOC0zODQw/eDIxNjAtZGVza3Rv/cC00ay1qdWp1dHN1/LWthaXNlbi10di1z/ZXJpZXMtd2FsbHBh/cGVyLmpwZw" alt="Jujutsu Kaisen">
+                <div class="slide-content">
+                    <h3>Jujutsu Kaisen Temporada 3</h3>
+                    <p>El nuevo arco del Culling Game en producción para 2025.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controles -->
+        <div class="controls">
+            <button class="prev" onclick="prevSlide()">❮</button>
+            <button class="next" onclick="nextSlide()">❯</button>
+        </div>
+
+        <!-- Indicadores -->
+        <div class="indicators" id="indicatorsContainer"></div>
+    </div>
+
+    <h1>Animes en tendencia</h1>
+    <section class="grid">
+        {% for anime in trending %}
+            <article class="card">
+                <a href="{% url 'anime:detail' anime.slug %}">
+                    <img src="{{ anime.image }}" alt="{{ anime.title }}">
+                    <h2>{{ anime.title }}</h2>
+                    <p>{{ anime.format }} | {{ anime.status }}</p>
+                </a>
+            </article>
+        {% endfor %}
+    </section>
+
+    <h1>Animes en emisión</h1>
+    <section class="grid">
+        {% for anime in seasonal %}
+            <article class="card">
+                <a href="{% url 'anime:detail' anime.slug %}">
+                    <img src="{{ anime.image }}" alt="{{ anime.title }}">
+                    <h2>{{ anime.title }}</h2>
+                    <p>{{ anime.format }} | {{ anime.status }}</p>
+                </a>
+            </article>
+        {% endfor %}
+    </section>
+
+
+
+    <footer>
+        <p>&copy; 2025 HikariList. Todos los derechos reservados.</p>
+    </footer>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const input = document.getElementById('search-input');
+      const preview = document.getElementById('search-preview');
+      const wrapper = document.querySelector('.search-wrapper');
+
+      input.addEventListener('input', () => {
+        const q = input.value.trim();
+        if (!q) {
+          preview.classList.remove('show');
+          preview.innerHTML = '';
+          return;
+        }
+        fetch(`/anime/search/?q=${encodeURIComponent(q)}`)
+          .then(res => res.json())
+          .then(data => {
+            preview.innerHTML = '';
+            if (data.results.length) {
+              data.results.forEach(anime => {
+                const a = document.createElement('a');
+                a.href = `/anime/${anime.slug}/`;
+                a.innerHTML = `
+                  <img src="${anime.image}" alt="${anime.title}">
+                  <span>${anime.title}</span>
+                `;
+                preview.appendChild(a);
+              });
+            } else {
+              preview.innerHTML = '<div class="px-2 py-1 text-gray-400 text-sm">Sin resultados</div>';
+            }
+            preview.classList.add('show');
+          })
+          .catch(() => preview.classList.remove('show'));
+      });
+
+      document.addEventListener('click', e => {
+        if (!wrapper.contains(e.target)) {
+          preview.classList.remove('show');
+        }
+      });
+    });
+
+    // Carrusel JS
+    let currentIndex = 0;
+    const slides = document.getElementById('slidesContainer');
+    const totalSlides = document.querySelectorAll('.slide').length;
+    const indicatorsContainer = document.getElementById('indicatorsContainer');
+
+    // Crear indicadores
+    for (let i = 0; i < totalSlides; i++) {
+      const indicator = document.createElement('div');
+      indicator.className = 'indicator';
+      indicator.addEventListener('click', () => goToSlide(i));
+      indicatorsContainer.appendChild(indicator);
+    }
+
+    function updateSlide() {
+      slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+      document.querySelectorAll('.indicator').forEach((ind, idx) => {
+        ind.classList.toggle('active', idx === currentIndex);
+      });
+    }
+
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % totalSlides;
+      updateSlide();
+    }
+
+    function prevSlide() {
+      currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+      updateSlide();
+    }
+
+    function goToSlide(index) {
+      currentIndex = index;
+      updateSlide();
+    }
+
+    // Autoplay
+    setInterval(nextSlide, 6000);
+    updateSlide();
+  </script>
+
+
+</body>
+</html>

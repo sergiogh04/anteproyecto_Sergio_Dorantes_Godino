@@ -77,7 +77,7 @@
 }
 
 .btn-main {
-    background: #27ae60;
+    background: #ff6b6b;
 }
 
 /* Responsive */
@@ -105,10 +105,9 @@
 }
 /* Estilos para botones anime */
 .btn-login {
-    background: #ff6b6b;
+    background: #14191f;
     border: #ff6b6b;
     color: #fff !important;
-    text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
     position: relative;
     overflow: hidden;
     text-decoration: none;
@@ -116,10 +115,9 @@
 }
 
 .btn-register {
-    background: #4ecdc4;
+    background: #14191f;
     border: #4ecdc4;
-    color: #000 !important;
-    text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+    color: white;
     position: relative;
     overflow: hidden;
     text-decoration: none;
@@ -138,12 +136,10 @@
     font-family: 'Chakra Petch', sans-serif;
     font-weight: 700;
     transition: all 0.3s ease;
-    box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
+
 }
 
-.btn-login{
-    box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
-}
+
 
 .btn-main:hover {
     transform: scale(1.1) rotate(2deg);
@@ -251,7 +247,7 @@
     background: linear-gradient(
         90deg,
         transparent,
-        #4ecdc4,
+        #14191f,
         #ff6b6b,
         transparent
     );
@@ -279,7 +275,7 @@
 /* ========== BOTÓN COMENZAR ========== */
 .btn-comenzar {
     padding: 15px 50px;
-    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    background-color: #14191f;
     color: white !important;
     border: 2px solid rgba(255,255,255,0.3);
     border-radius: 30px;

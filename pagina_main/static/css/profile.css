@@ -1,0 +1,246 @@
+/* Fondo principal estilo anime */
+.anime-bg {
+    background-color: #14191f;
+    min-height: 100vh;
+}
+
+/* Tipografía principal */
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&display=swap');
+
+body {
+    font-family: 'Chakra Petch', sans-serif;
+    background-color: #0b0e14;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos generales del perfil */
+.profile-container {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* Layout principal */
+.profile-main {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    gap: 2rem;
+}
+
+/* Botón volver */
+.back-to-index {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #ff6b6b;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+}
+
+.back-to-index:hover {
+    transform: translateY(-3px);
+    background: #ff5252;
+}
+
+.arrow {
+    font-size: 1.2em;
+}
+
+/* Header del perfil */
+.profile-header {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+
+.avatar-card {
+    position: relative;
+}
+
+.avatar-wrapper {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #4ecdc4;
+    box-shadow: 0 0 15px rgba(78, 205, 196, 0.3);
+}
+
+.upload-btn {
+    background: #ff6b6b;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+
+.upload-btn:hover {
+    background: #ff5252;
+}
+
+.profile-info h2 {
+    color: #ff6b6b;
+    margin: 0;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.profile-info p {
+    color: #4ecdc4;
+    margin: 0.5rem 0;
+    font-size: 1.2rem;
+}
+
+/* Navegación lateral */
+.status-nav {
+    background: #1c2129;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 0 15px rgba(0,0,0,0.4);
+    height: fit-content;
+}
+
+.status-tabs {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.status-tabs li {
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: #2c3e50;
+    color: #c7d2e2;
+}
+
+.status-tabs li:hover,
+.status-tabs li.active {
+    background: #ff6b6b !important;
+    color: #000 !important;
+}
+
+/* Lista de animes */
+.anime-lists {
+    flex: 1;
+}
+
+.list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.list-header h3 {
+    color: #ff6b6b;
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+.list-header span {
+    background: #ff6b6b;
+    color: #000;
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1.5rem;
+}
+
+.anime-card {
+    background: #1c2129;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.anime-card:hover {
+    transform: translateY(-5px);
+}
+
+.anime-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.anime-info {
+    padding: 1rem;
+}
+
+.anime-info h4 {
+    color: #ff6b6b;
+    margin: 0 0 0.5rem 0;
+    font-size: 1.1rem;
+}
+
+.anime-info p {
+    color: #c7d2e2;
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.empty-state {
+    background: #1c2129;
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.empty-state p {
+    color: #ff6b6b;
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .profile-main {
+        grid-template-columns: 1fr;
+    }
+
+    .status-nav {
+        width: 100%;
+    }
+
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .back-to-index {
+        bottom: 15px;
+        right: 15px;
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+}

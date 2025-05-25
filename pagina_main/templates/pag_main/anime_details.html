@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>{{ anime.title }} - HikariList</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&display=swap" rel="stylesheet">
+    <style>
+        .add-list-form {
+            margin-top: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .add-list-form select {
+            padding: 0.5rem;
+        }
+        .add-list-form button {
+            padding: 0.5rem 1rem;
+            background: #ff6b6b;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="anime-bg">
+    <header>
+         <a href="{% url 'anime:index' %}"><h1 class="logo">HikariList</h1></a>
+        <nav>
+            <a href="{% url 'anime:index' %}">Inicio</a>
+        </nav>
+    </header>
+
+    <section class="anime-detail">
+        <img src="{{ anime.image }}" alt="{{ anime.title }}">
+        <div>
+            <h2 style="color:  #ff6b6b;">{{ anime.title }}</h2>
+            <p><strong>Estado:</strong> {{ anime.status }}</p>
+            <p><strong>Formato:</strong> {{ anime.format }}</p>
+            <p><strong>Géneros:</strong>
+                {% for genre in anime.genres.all %}
+                    <span style="background-color: #ff6b6b; color: white; padding: 0.2rem 0.5rem; margin: 0.2rem; border-radius: 0.3rem;">
+                        {{ genre.name }}
+                    </span>
+                {% endfor %}
+            </p>
+            <p><strong>Sinopsis:</strong></p>
+            <p>{{ anime.description }}</p>
+        </div>
+    </section>
+
+        <form method="post" class="add-list-form">
+            {% csrf_token %}
+            <label for="status">Añadir a mi lista:</label>
+            <select name="status" id="status">
+                {% for code, label in status_choices %}
+                    <option value="{{ code }}" {% if user_anime and user_anime.status == code %}selected{% endif %}>
+                        {{ label }}
+                    </option>
+                {% endfor %}
+            </select>
+            <button type="submit">Guardar</button>
+        </form>
+
+</body>
+</html>

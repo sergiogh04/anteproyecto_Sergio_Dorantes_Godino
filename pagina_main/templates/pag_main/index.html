@@ -3,14 +3,13 @@
 {% load static %}
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>HikariList</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/main.css' %}"></link>
-    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&display=swap" rel="stylesheet" />
     <style>
-
-       .carousel {
+        .carousel {
             width: 100vw;
             height: 300px;
             margin: 0 auto;
@@ -21,78 +20,71 @@
         }
 
         .search-wrapper {
-          position: relative;
-          width: 180px;
-          flex-shrink: 0;
+            position: relative;
+            width: 180px;
+            flex-shrink: 0;
         }
 
-
         #search-input {
-          width: 150%;
-          padding: 0.25rem 0.75rem;
-          border-radius: 9999px;
-          border: 1px solid #ff6b6b;
-          background: #1c2129;
-          color: #fff;
-          font-size: 0.875rem;
-          outline: none;
-          transition: all 0.2s;
+            width: 150%;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            border: 1px solid #ff6b6b;
+            background: #1c2129;
+            color: #fff;
+            font-size: 0.875rem;
+            outline: none;
+            transition: all 0.2s;
         }
 
         #search-input:focus {
-          border-color: #ff6b6b;
+            border-color: #ff6b6b;
         }
-
 
         #search-preview {
-          position: absolute;
-          top: 100%;
-          left: 0;
-          width: 160%;
-          background: #1c2129;
-          border: 1px solid #ff6b6b;
-          border-radius: 0.5rem;
-          max-height: 180px;
-          overflow-y: auto;
-          display: none;
-          z-index: 9999;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 160%;
+            background: #1c2129;
+            border: 1px solid #ff6b6b;
+            border-radius: 0.5rem;
+            max-height: 180px;
+            overflow-y: auto;
+            display: none;
+            z-index: 9999;
         }
-
 
         #search-preview.show {
-          display: block;
+            display: block;
         }
 
-
         #search-preview a {
-          display: flex;
-          align-items: center;
-          gap: 0.5rem;
-          padding: 0.4rem;
-          color: #fff;
-          text-decoration: none;
-          font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem;
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.875rem;
         }
 
         #search-preview a:hover {
-          background: #ff6b6b;
-          color: #000;
+            background: #ff6b6b;
+            color: #000;
         }
 
         #search-preview img {
-          width: 30px;
-          height: 42px;
-          object-fit: cover;
-          border-radius: 0.25rem;
+            width: 30px;
+            height: 42px;
+            object-fit: cover;
+            border-radius: 0.25rem;
         }
-
-
 
         .slides {
             display: flex;
             transition: transform 0.5s ease-in-out;
         }
-
 
         .slide {
             min-width: 100%;
@@ -100,14 +92,12 @@
             height: 500px;
         }
 
-
         .slide img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             filter: brightness(0.7);
         }
-
 
         .slide-content {
             position: absolute;
@@ -127,7 +117,6 @@
             font-size: 1.2em;
             line-height: 1.5;
         }
-
 
         .controls button {
             position: absolute;
@@ -155,7 +144,6 @@
             right: 0;
             border-radius: 5px 0 0 5px;
         }
-
 
         .indicators {
             position: absolute;
@@ -244,10 +232,6 @@
             filter: blur(15px);
         }
 
-
-
-
-
         @media (max-width: 768px) {
             footer {
                 padding: 2rem 1rem;
@@ -273,49 +257,47 @@
                 font-size: 0.8rem;
             }
         }
-
     </style>
 </head>
 
 <body class="anime-bg">
     <header>
-        <a href="{% url 'anime:index' %}"><h1 class="logo">HikariList</h1></a>
-          <div class="search-wrapper">
-            <input id="search-input" type="text" placeholder="Buscar..." autocomplete="off">
+        <a href="{% url 'anime:index' %}">
+            <h1 class="logo">HikariList</h1>
+        </a>
+        <div class="search-wrapper">
+            <input id="search-input" type="text" placeholder="Buscar..." autocomplete="off" />
             <div id="search-preview"></div>
         </div>
         <nav>
-
             <a href="{% url 'anime:home' %}">Inicio</a>
-            <a href="{% url 'anime:home' %}">Foros</a>
             <a href="{% url 'anime:profile' %}">Perfil</a>
-
-
+            <a href="{% url 'anime:index' %}">Manga</a>
+            <a href="{% url 'anime:logout' %}">Salir</a>
         </nav>
     </header>
-     <div class="carousel">
+
+    <div class="carousel">
         <div class="slides" id="slidesContainer">
             <!-- Slide 1 -->
             <div class="slide">
-                <img src="https://imgs.search.brave.com/Fa2imAH_rT9WgzToaUEvj_tkVqnaC-VZi3M3NSUp6-Q/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL1Mv/cHYtdGFyZ2V0LWlt/YWdlcy85NWVhNTZh/YjIxMmZiYzIwMjA3/MTJlYmRkOWNjNWM2/ZDNjNzliY2Q1Yzcx/OTM4NmFjMDk1MmI4/NTZhMWY0ZTZmLmpw/Zw" alt="Attack on Titan">
+                <img src="https://wallpapercave.com/wp/wp1956193.jpg" alt="Attack on Titan" />
                 <div class="slide-content">
                     <h3>Attack on Titan Final</h3>
                     <p>La épica conclusión llegará este otoño cerrando la saga de Eren y sus aliados.</p>
                 </div>
             </div>
 
-            <!-- Slide 2 -->
             <div class="slide">
-                <img src="https://imgs.search.brave.com/R_WvkJ5AobA6AE0pD2q-tkohBPNq3iUWOjs3a0-840M/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJjYXZlLmNv/bS93cC93cDQzMTc5/MDMuanBn" alt="Demon Slayer">
+                <img src="https://wallpapers.com/images/hd/flame-breathing-tanjiro-kimetsu-no-yaiba-yccradgo1cp31hy7.jpg" alt="Demon Slayer" />
                 <div class="slide-content">
                     <h3>Demon Slayer: Castillo Infinito</h3>
                     <p>Nueva producción cinematográfica para cerrar el arco final.</p>
                 </div>
             </div>
 
-            <!-- Slide 3 -->
             <div class="slide">
-                <img src="https://imgs.search.brave.com/ljtwhGRChYqf-CaPrRC_iPp09cQJpxsFUQBwL1Krf2k/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJjYXQuY29t/L3cvZnVsbC85LzAv/Ny8yNDcwOC0zODQw/eDIxNjAtZGVza3Rv/cC00ay1qdWp1dHN1/LWthaXNlbi10di1z/ZXJpZXMtd2FsbHBh/cGVyLmpwZw" alt="Jujutsu Kaisen">
+                <img src="https://4kwallpapers.com/images/walls/thumbs_3t/9292.jpg" alt="Jujutsu Kaisen" />
                 <div class="slide-content">
                     <h3>Jujutsu Kaisen Temporada 3</h3>
                     <p>El nuevo arco del Culling Game en producción para 2025.</p>
@@ -323,7 +305,6 @@
             </div>
         </div>
 
-        <!-- Controles -->
         <div class="controls">
             <button class="prev" onclick="prevSlide()">❮</button>
             <button class="next" onclick="nextSlide()">❯</button>
@@ -336,117 +317,127 @@
     <h1>Animes en tendencia</h1>
     <section class="grid">
         {% for anime in trending %}
-            <article class="card">
-                <a href="{% url 'anime:detail' anime.slug %}">
-                    <img src="{{ anime.image }}" alt="{{ anime.title }}">
-                    <h2>{{ anime.title }}</h2>
-                    <p>{{ anime.format }} | {{ anime.status }}</p>
-                </a>
-            </article>
+        <article class="card">
+            <a href="{% url 'anime:detail' anime.slug %}">
+                <img src="{{ anime.image }}" alt="{{ anime.title }}" />
+                <h2>{{ anime.title }}</h2>
+                <p>{{ anime.format }} | {{ anime.status }}</p>
+            </a>
+        </article>
         {% endfor %}
     </section>
 
     <h1>Animes en emisión</h1>
     <section class="grid">
         {% for anime in seasonal %}
-            <article class="card">
-                <a href="{% url 'anime:detail' anime.slug %}">
-                    <img src="{{ anime.image }}" alt="{{ anime.title }}">
-                    <h2>{{ anime.title }}</h2>
-                    <p>{{ anime.format }} | {{ anime.status }}</p>
-                </a>
-            </article>
+        <article class="card">
+            <a href="{% url 'anime:detail' anime.slug %}">
+                <img src="{{ anime.image }}" alt="{{ anime.title }}" />
+                <h2>{{ anime.title }}</h2>
+                <p>{{ anime.format }} | {{ anime.status }}</p>
+            </a>
+        </article>
         {% endfor %}
     </section>
 
-
+    <h1>Mejores valorados</h1>
+    <section class="grid">
+        {% for anime in top_rated %}
+        <article class="card">
+            <a href="{% url 'anime:detail' anime.slug %}">
+                <img src="{{ anime.image }}" alt="{{ anime.title }}" />
+                <h2>{{ anime.title }}</h2>
+                <p>⭐ {{ anime.avg|floatformat:1 }}/10</p>
+            </a>
+        </article>
+        {% endfor %}
+    </section>
 
     <footer>
         <p>&copy; 2025 HikariList. Todos los derechos reservados.</p>
     </footer>
+
     <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const input = document.getElementById('search-input');
-      const preview = document.getElementById('search-preview');
-      const wrapper = document.querySelector('.search-wrapper');
+        document.addEventListener('DOMContentLoaded', () => {
+            const input = document.getElementById('search-input');
+            const preview = document.getElementById('search-preview');
+            const wrapper = document.querySelector('.search-wrapper');
 
-      input.addEventListener('input', () => {
-        const q = input.value.trim();
-        if (!q) {
-          preview.classList.remove('show');
-          preview.innerHTML = '';
-          return;
+            input.addEventListener('input', () => {
+                const q = input.value.trim();
+                if (!q) {
+                    preview.classList.remove('show');
+                    preview.innerHTML = '';
+                    return;
+                }
+                fetch(`/anime/search/?q=${encodeURIComponent(q)}`)
+                    .then(res => res.json())
+                    .then(data => {
+                        preview.innerHTML = '';
+                        if (data.results.length) {
+                            data.results.forEach(anime => {
+                                const a = document.createElement('a');
+                                a.href = `/anime/${anime.slug}/`;
+                                a.innerHTML = `
+                                <img src="${anime.image}" alt="${anime.title}" />
+                                <span>${anime.title}</span>
+                              `;
+                                preview.appendChild(a);
+                            });
+                        } else {
+                            preview.innerHTML = '<div class="px-2 py-1 text-gray-400 text-sm">Sin resultados</div>';
+                        }
+                        preview.classList.add('show');
+                    })
+                    .catch(() => preview.classList.remove('show'));
+            });
+
+            document.addEventListener('click', e => {
+                if (!wrapper.contains(e.target)) {
+                    preview.classList.remove('show');
+                }
+            });
+        });
+
+        // Carrusel
+        let currentIndex = 0;
+        const slides = document.getElementById('slidesContainer');
+        const totalSlides = document.querySelectorAll('.slide').length;
+        const indicatorsContainer = document.getElementById('indicatorsContainer');
+
+        // Indicadores
+        for (let i = 0; i < totalSlides; i++) {
+            const indicator = document.createElement('div');
+            indicator.className = 'indicator';
+            indicator.addEventListener('click', () => goToSlide(i));
+            indicatorsContainer.appendChild(indicator);
         }
-        fetch(`/anime/search/?q=${encodeURIComponent(q)}`)
-          .then(res => res.json())
-          .then(data => {
-            preview.innerHTML = '';
-            if (data.results.length) {
-              data.results.forEach(anime => {
-                const a = document.createElement('a');
-                a.href = `/anime/${anime.slug}/`;
-                a.innerHTML = `
-                  <img src="${anime.image}" alt="${anime.title}">
-                  <span>${anime.title}</span>
-                `;
-                preview.appendChild(a);
-              });
-            } else {
-              preview.innerHTML = '<div class="px-2 py-1 text-gray-400 text-sm">Sin resultados</div>';
-            }
-            preview.classList.add('show');
-          })
-          .catch(() => preview.classList.remove('show'));
-      });
 
-      document.addEventListener('click', e => {
-        if (!wrapper.contains(e.target)) {
-          preview.classList.remove('show');
+        function updateSlide() {
+            slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+            document.querySelectorAll('.indicator').forEach((ind, idx) => {
+                ind.classList.toggle('active', idx === currentIndex);
+            });
         }
-      });
-    });
 
-    // Carrusel
-    let currentIndex = 0;
-    const slides = document.getElementById('slidesContainer');
-    const totalSlides = document.querySelectorAll('.slide').length;
-    const indicatorsContainer = document.getElementById('indicatorsContainer');
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            updateSlide();
+        }
 
-    // Indicaddores
-    for (let i = 0; i < totalSlides; i++) {
-      const indicator = document.createElement('div');
-      indicator.className = 'indicator';
-      indicator.addEventListener('click', () => goToSlide(i));
-      indicatorsContainer.appendChild(indicator);
-    }
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+            updateSlide();
+        }
 
-    function updateSlide() {
-      slides.style.transform = `translateX(-${currentIndex * 100}%)`;
-      document.querySelectorAll('.indicator').forEach((ind, idx) => {
-        ind.classList.toggle('active', idx === currentIndex);
-      });
-    }
+        function goToSlide(index) {
+            currentIndex = index;
+            updateSlide();
+        }
 
-    function nextSlide() {
-      currentIndex = (currentIndex + 1) % totalSlides;
-      updateSlide();
-    }
-
-    function prevSlide() {
-      currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-      updateSlide();
-    }
-
-    function goToSlide(index) {
-      currentIndex = index;
-      updateSlide();
-    }
-
-
-    setInterval(nextSlide, 6000);
-    updateSlide();
-  </script>
-
-
+        setInterval(nextSlide, 6000);
+        updateSlide();
+    </script>
 </body>
+
 </html>

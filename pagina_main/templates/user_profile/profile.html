@@ -13,8 +13,10 @@
          <a href="{% url 'anime:index' %}"><h1 class="logo">HikariList</h1></a>
         <nav>
             <a href="{% url 'anime:home' %}">Inicio</a>
-            <a href="{% url 'anime:home' %}">Foros</a>
             <a href="{% url 'anime:profile' %}">Perfil</a>
+            <a href="{% url 'anime:index' %}">Manga</a>
+            <a href="{% url 'anime:logout' %}">Salir</a>
+
         </nav>
     </header>
     <div class="anime-bg profile-container">
@@ -28,7 +30,7 @@
                     {% if profile.avatar %}
                         <img src="{{ profile.avatar.url }}" alt="{{ user.username }}">
                     {% else %}
-                        <img src="{% static 'images/hermosa-escena-de-dibujos-animados-de-personajes-de-anime.jpg' %}" style="width: 150%; height: auto; display: block;" alt="Avatar por defecto">
+                        <img src="{% static 'images/375161.png' %}" style="width: 150%; height: auto; display: block;" alt="Avatar por defecto">
                     {% endif %}
                 </div>
                 <form method="post" enctype="multipart/form-data" action="{% url 'anime:profile' %}">

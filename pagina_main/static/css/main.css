@@ -155,3 +155,169 @@ header nav a:hover {
 #search-preview {
   font-family: 'Chakra Petch', sans-serif;
 }
+
+h1 {
+    margin: 2rem 1rem 1rem 3rem; /* top, right, bottom, left */
+}
+
+section.grid {
+    margin: 0 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+}
+.add-list-form {
+    margin: 2rem  2rem ;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: #1c2129;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    max-width: 420px;
+    font-weight: 700;
+    color: #ff6b6b;
+    justify-content: space-between;
+}
+
+.add-list-form label {
+    font-size: 1rem;
+    color: #4ecdc4;
+    white-space: nowrap;
+    flex-shrink: 0; /* evitar que el label se achique */
+    min-width: 120px;
+}
+
+.add-list-form select {
+    flex-grow: 1; /* que el select ocupe el espacio restante */
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    border: none;
+    background-color: #14191f;
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.5);
+}
+
+.add-list-form select:hover,
+.add-list-form select:focus {
+    background-color: #4ecdc4;
+    color: #14191f;
+    outline: none;
+}
+
+.add-list-form button {
+    padding: 0.5rem 1.5rem;
+    background: #ff6b6b;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    flex-shrink: 0; /* evitar que el botón se achique */
+}
+
+.add-list-form button:hover {
+    background-color: #e05a5a;
+    box-shadow:
+        0 0 12px #e05a5a,
+        0 0 30px #e05a5a;
+}
+
+#rating-section {
+     margin: 2rem  2rem ;
+    background: #1c2129;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    max-width: 420px;
+    color: #4ecdc4;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+#rating-section p#avg-score {
+    margin: 0 1rem 0 0;
+    font-size: 1.1rem;
+    flex: 1 1 100%;
+}
+
+#rating-section label {
+    margin-right: 0.5rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+#score-input {
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    border: none;
+    background-color: #14191f;
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.5);
+}
+
+#score-input:hover,
+#score-input:focus {
+    background-color: #4ecdc4;
+    color: #14191f;
+    outline: none;
+}
+
+#submit-score {
+    padding: 0.5rem 1.5rem;
+    background: #ff6b6b;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-left: 0.5rem;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#submit-score:hover {
+    background-color: #e05a5a;
+    box-shadow:
+        0 0 12px #e05a5a,
+        0 0 30px #e05a5a;
+}
+
+
+@media (max-width: 480px) {
+    .add-list-form {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+        max-width: 90vw;
+    }
+
+    .add-list-form label,
+    .add-list-form select,
+    .add-list-form button {
+        flex-grow: 0;
+        width: 100%;
+        min-width: auto;
+    }
+
+    #rating-section {
+        flex-direction: column;
+        align-items: stretch;
+        max-width: 90vw;
+    }
+
+    #submit-score {
+        margin-left: 0;
+        margin-top: 0.75rem;
+        width: 100%;
+    }
+}

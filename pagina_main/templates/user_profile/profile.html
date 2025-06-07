@@ -6,16 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil de Usuario</title>
     <link rel="stylesheet" href="{% static 'css/profile.css' %}">
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/search_bar.css' %}" />
 </head>
 <body class="anime-bg">
     <header>
          <a href="{% url 'anime:index' %}"><h1 class="logo">HikariList</h1></a>
+         <div class="search-wrapper">
+            <input id="search-input" type="text" placeholder="Buscar..." autocomplete="off" />
+            <div id="search-preview"></div>
+        </div>
         <nav>
             <a href="{% url 'anime:home' %}">Inicio</a>
             <a href="{% url 'anime:profile' %}">Perfil</a>
-            <a href="{% url 'anime:index' %}">Manga</a>
-            <a href="{% url 'anime:logout' %}">Salir</a>
+            <a href="{% url 'anime:logout' %}">Cerrar Sesión</a>
 
         </nav>
     </header>
@@ -89,6 +94,9 @@
             </section>
         </div>
     </div>
+     <footer>
+        <p>&copy; 2025 HikariList.</p>
+    </footer>
 
     <script>
         window.onload = function() {
@@ -118,6 +126,50 @@
                 activeTab.classList.add('active');
             }
         }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const input = document.getElementById('search-input');
+            const preview = document.getElementById('search-preview');
+            const wrapper = document.querySelector('.search-wrapper');
+
+            input.addEventListener('input', () => {
+                const q = input.value.trim();
+                if (!q) {
+                    preview.classList.remove('show');
+                    preview.innerHTML = '';
+                    return;
+                }
+                fetch(`/anime/search/?q=${encodeURIComponent(q)}`)
+                    .then(res => res.json())
+                    .then(data => {
+                        preview.innerHTML = '';
+                        if (data.results.length) {
+                            data.results.forEach(anime => {
+                                const a = document.createElement('a');
+                                a.href = `/anime/${anime.slug}/`;
+                                a.innerHTML = `
+                                <img src="${anime.image}" alt="${anime.title}" />
+                                <span>${anime.title}</span>
+                              `;
+                                preview.appendChild(a);
+                            });
+                        } else {
+                            preview.innerHTML = '<div class="px-2 py-1 text-gray-400 text-sm">Sin resultados</div>';
+                        }
+                        preview.classList.add('show');
+                    })
+                    .catch(() => preview.classList.remove('show'));
+            });
+
+            document.addEventListener('click', e => {
+                if (!wrapper.contains(e.target)) {
+                    preview.classList.remove('show');
+                }
+            });
+        });
+
+
     </script>
+
 </body>
 </html>

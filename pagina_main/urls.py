@@ -17,6 +17,11 @@ urlpatterns = [
     path('list/', views.anime_index, name='index'),
     path('profile/', views.profile_view, name='profile'),
     path('search/', views.anime_search, name='anime_search'),
+    path('allanime/', views.all_anime_view, name='allanime'),
+
     path('<slug:slug>/', views.anime_detail, name='detail'),
+
     path('api/', include(router.urls)),  # <-- Necesario para acceder a /api/animes y /api/ratings
+
+
 ]

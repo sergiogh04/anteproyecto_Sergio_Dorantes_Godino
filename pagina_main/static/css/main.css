@@ -1,8 +1,3 @@
-.anime-bg {
-   background-color: #14191f;
-    min-height: 100vh;
-}
-
 @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&display=swap');
 
 body {
@@ -12,11 +7,12 @@ body {
     margin: 0;
     padding: 0;
 }
-header nav .search-wrapper {
-  margin-right: 1rem;
-  order: 0;
-  width: 180px;
+
+.anime-bg {
+    background-color: #14191f;
+    min-height: 100vh;
 }
+
 header {
     background-color: #14191f;
     padding: 1rem 2rem;
@@ -44,15 +40,32 @@ header nav a:hover {
     color: #4ecdc4;
 }
 
+header nav .search-wrapper {
+    margin-right: 1rem;
+    order: 0;
+    width: 170px;
+}
 
+.logo {
+    color: #ff6b6b;
+    display: inline-block;
+    transform: rotate(-3deg);
+    margin-right: 25px;
+    text-shadow:
+        3px 3px 0 #4ecdc4,
+        6px 6px 0 #ffe66d,
+        0 0 30px rgba(255,107,107,0.8);
+    animation: float 3s ease-in-out infinite;
+}
 
-.grid {
+.grid,
+section.grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     gap: 2rem;
     padding: 2rem;
+    margin: 0 1rem;
 }
-
 
 .card {
     background: #1c2129;
@@ -85,7 +98,6 @@ header nav a:hover {
     padding: 0 1rem 1rem;
 }
 
-
 .anime-detail {
     display: flex;
     flex-wrap: wrap;
@@ -115,59 +127,19 @@ header nav a:hover {
     color: #4ecdc4;
 }
 
-
-@media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .grid {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    }
-
-    .anime-detail {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .anime-detail div {
-        text-align: center;
-    }
-}
-
-.logo {
-   color: #ff6b6b;
-    display: inline-block;
-    transform: rotate(-3deg);
-    margin-right: 25px;
-    text-shadow:
-        3px 3px 0 #4ecdc4,
-        6px 6px 0 #ffe66d,
-        0 0 30px rgba(255,107,107,0.8);
-    animation: float 3s ease-in-out infinite;
-}
-#search-input {
-  font-family: 'Chakra Petch', sans-serif;
-  font-size: 1rem;
-}
-
-#search-preview {
-  font-family: 'Chakra Petch', sans-serif;
-}
-
 h1 {
-    margin: 2rem 1rem 1rem 3rem; /* top, right, bottom, left */
+    margin: 2rem 1rem 1rem 3rem;
 }
 
-section.grid {
-    margin: 0 1rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 1rem;
+#search-input,
+#search-preview {
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 1rem;
 }
+
+/* Estilo para el formulario de listas */
 .add-list-form {
-    margin: 2rem  2rem ;
+    margin: 2rem 2rem;
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -184,12 +156,12 @@ section.grid {
     font-size: 1rem;
     color: #4ecdc4;
     white-space: nowrap;
-    flex-shrink: 0; /* evitar que el label se achique */
+    flex-shrink: 0;
     min-width: 120px;
 }
 
 .add-list-form select {
-    flex-grow: 1; /* que el select ocupe el espacio restante */
+    flex-grow: 1;
     padding: 0.5rem 1rem;
     border-radius: 8px;
     border: none;
@@ -217,7 +189,7 @@ section.grid {
     font-weight: 700;
     cursor: pointer;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    flex-shrink: 0; /* evitar que el botón se achique */
+    flex-shrink: 0;
 }
 
 .add-list-form button:hover {
@@ -227,8 +199,9 @@ section.grid {
         0 0 30px #e05a5a;
 }
 
+/* Estilo para sección de puntuación */
 #rating-section {
-     margin: 2rem  2rem ;
+    margin: 2rem 2rem;
     background: #1c2129;
     padding: 1rem 2rem;
     border-radius: 12px;
@@ -292,27 +265,107 @@ section.grid {
         0 0 30px #e05a5a;
 }
 
-
-@media (max-width: 480px) {
-    .add-list-form {
+/* Responsive */
+@media (max-width: 768px) {
+    header {
         flex-direction: column;
-        align-items: stretch;
+        align-items: flex-start;
+        padding: 1rem;
+    }
+
+    header nav {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 0.5rem;
+    }
+
+    header nav a {
+        margin: 0;
+        font-size: 0.95rem;
+        flex: 1 1 auto;
+        text-align: center;
+    }
+
+    header nav .search-wrapper {
+        order: 2;
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+
+    header h1 {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .grid,
+    section.grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        padding: 1rem;
+        gap: 1.5rem;
+    }
+
+    .anime-detail {
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+    }
+
+    .anime-detail div {
+        max-width: 100%;
+        text-align: center;
+        padding: 0 1rem;
+    }
+
+    .anime-detail img {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 576px) {
+    .grid,
+    section.grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
         gap: 1rem;
-        max-width: 90vw;
+        padding: 1rem;
+    }
+
+    .card h2 {
+        font-size: 1rem;
+        padding: 0 0.75rem;
+    }
+
+    .card p {
+        font-size: 0.85rem;
+        padding: 0 0.75rem 0.75rem;
+    }
+
+    .add-list-form,
+    #rating-section {
+        flex-direction: column;
+        max-width: 100%;
+        margin: 1rem;
+        padding: 1rem;
     }
 
     .add-list-form label,
     .add-list-form select,
-    .add-list-form button {
-        flex-grow: 0;
+    .add-list-form button,
+    #score-input,
+    #submit-score {
         width: 100%;
-        min-width: auto;
     }
 
-    #rating-section {
-        flex-direction: column;
-        align-items: stretch;
-        max-width: 90vw;
+    #rating-section label {
+        width: 100%;
+        margin-bottom: 0.25rem;
+    }
+
+    #rating-section p#avg-score {
+        font-size: 1rem;
+        margin: 0 0 0.5rem;
     }
 
     #submit-score {

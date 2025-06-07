@@ -136,3 +136,10 @@ class UserAnimeViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         return self.queryset.filter(user=self.request.user)
+
+
+@login_required(login_url='anime:login')
+def all_anime_view(request):
+    all_animes = Anime.objects.all().order_by('title')
+    return render(request, 'pag_main/all_anime.html', {'all_animes': all_animes})
+

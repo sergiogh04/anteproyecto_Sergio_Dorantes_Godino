@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Todos los Animes - HikariList</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&display=swap" rel="stylesheet" />
+    <style>
+          .search-wrapper {
+            position: relative;
+            width: 180px;
+            flex-shrink: 0;
+        }
+
+        #search-input {
+            width: 150%;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            border: 1px solid #ff6b6b;
+            background: #1c2129;
+            color: #fff;
+            font-size: 0.875rem;
+            outline: none;
+            transition: all 0.2s;
+        }
+
+        #search-input:focus {
+            border-color: #ff6b6b;
+        }
+
+        #search-preview {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 160%;
+            background: #1c2129;
+            border: 1px solid #ff6b6b;
+            border-radius: 0.5rem;
+            max-height: 180px;
+            overflow-y: auto;
+            display: none;
+            z-index: 9999;
+        }
+
+        #search-preview.show {
+            display: block;
+        }
+
+        #search-preview a {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem;
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.875rem;
+        }
+
+        #search-preview a:hover {
+            background: #ff6b6b;
+            color: #000;
+        }
+
+        #search-preview img {
+            width: 30px;
+            height: 42px;
+            object-fit: cover;
+            border-radius: 0.25rem;
+        }
+
+    </style>
+</head>
+
+<body class="anime-bg">
+    <header>
+        <a href="{% url 'anime:index' %}">
+            <h1 class="logo">HikariList</h1>
+        </a>
+        <div class="search-wrapper">
+            <input id="search-input" type="text" placeholder="Buscar..." autocomplete="off" />
+            <div id="search-preview"></div>
+        </div>
+        <nav>
+            <a href="{% url 'anime:home' %}">Inicio</a>
+            <a href="{% url 'anime:profile' %}">Perfil</a>
+            <a href="{% url 'anime:allanime' %}">Directorio Anime</a>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Todos los Animes</h1>
+        <section class="grid">
+            {% for anime in all_animes %}
+            <article class="card">
+                <a href="{% url 'anime:detail' anime.slug %}">
+                    <img src="{{ anime.image }}" alt="{{ anime.title }}" />
+                    <h2>{{ anime.title }}</h2>
+                    <p>{{ anime.format }} | {{ anime.status }}</p>
+                </a>
+            </article>
+            {% endfor %}
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 HikariList.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const input = document.getElementById('search-input');
+            const preview = document.getElementById('search-preview');
+            const wrapper = document.querySelector('.search-wrapper');
+
+            input.addEventListener('input', () => {
+                const q = input.value.trim();
+                if (!q) {
+                    preview.classList.remove('show');
+                    preview.innerHTML = '';
+                    return;
+                }
+                fetch(`/anime/search/?q=${encodeURIComponent(q)}`)
+                    .then(res => res.json())
+                    .then(data => {
+                        preview.innerHTML = '';
+                        if (data.results.length) {
+                            data.results.forEach(anime => {
+                                const a = document.createElement('a');
+                                a.href = `/anime/${anime.slug}/`;
+                                a.innerHTML = `
+                                    <img src="${anime.image}" alt="${anime.title}" />
+                                    <span>${anime.title}</span>
+                                `;
+                                preview.appendChild(a);
+                            });
+                        } else {
+                            preview.innerHTML = '<div class="px-2 py-1 text-gray-400 text-sm">Sin resultados</div>';
+                        }
+                        preview.classList.add('show');
+                    })
+                    .catch(() => preview.classList.remove('show'));
+            });
+
+            document.addEventListener('click', e => {
+                if (!wrapper.contains(e.target)) {
+                    preview.classList.remove('show');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

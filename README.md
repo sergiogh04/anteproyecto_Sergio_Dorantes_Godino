@@ -19,3 +19,5 @@
 - También necesito encontrar o ya me las arreglaré para poner los suficientes animes para que la página pueda empezar a arrancar en condiciones, dado que tengo pensado que ya esté todo predifinido, aunque si hay una obra muy especifica o poco conocida que no tenga introducida en mi base de datos tendré que implementar un formulario para que los usuarios agreguen sus obras, aunque no se como gestionar eso de cara al público, tengo que pensarlo bien.
 - Todas estás cosas pueden variar a lo largo de todo el desarrollo, aunque espero cumplirlo todo y que incluso pueda añadir muchas más funciones y contenido a la web.
 -  No sé cuanto tiempo voy a tardar en realizarlo, dado que quiero añadirle todas las funciones y contenido necesario a la página, intentaré optimizarlo en función al tiempo que se me dé.
+
+ # Documentación HikariList
